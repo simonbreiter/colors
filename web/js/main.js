@@ -149,11 +149,17 @@ var colors = {
     White: "#FFFFFF"
 };
 
+// Save all colors in local Storage
 for (var color in colors) {
-    $('ul').append('<li style="background-color:' + colors[color] + '">' 
+    localStorage.setItem(color, colors[color]);
+}
+
+// Render all colors in local Storage
+for (var i = 0; i < localStorage.length; i++) {
+    $('ul').append('<li style="background-color:' + localStorage.getItem(localStorage.key(i)) + '">' 
             + '<div class="wrapper">'
-            + '<div class="name">'+ color +'</div>'
-            + '<div class="color-value">' + colors[color] + '</div>'
+            + '<div class="name">'+ localStorage.key(i) +'</div>'
+            + '<div class="color-value">' + localStorage.getItem(localStorage.key(i)) + '</div>'
             + '</div>'
             + '</li>');
 }
