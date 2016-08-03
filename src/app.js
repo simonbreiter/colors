@@ -4,6 +4,7 @@ var app = express();
 var colors = require('./colors.json');
 
 app.use('/public', express.static(__dirname + '/public'));
+app.use('/node_modules', express.static(__dirname + '/node_modules'));
 
 app.set('view engine', 'pug');
 

@@ -1,5 +1,5 @@
 {
-  "name": "frontend-experiments",
+  "name": "colors",
   "version": "1.0.0",
   "description": "",
   "main": "",
@@ -15,24 +15,25 @@
     "watch:js": "onchange 'src/public/js/*.js' -- npm run build:js",
     "docker:up": "docker-compose build && docker-compose up -d",
     "docker:down": "docker-compose down",
-    "start": "node app.js"
+    "start": "node app.js",
+    "build": "node-sass --output-style compressed public/scss/main.scss public/css/main.css && postcss -u autoprefixer -r public/css/*.css"
   },
   "author": "Simon Breiter",
   "license": "MIT",
   "devDependencies": {
-    "autoprefixer": "^6.3.7",
     "imagemin-cli": "^3.0.0",
     "node-inspector": "^0.12.8",
-    "node-sass": "^3.8.0",
     "nodemon": "^1.10.0",
     "onchange": "^2.5.0",
-    "postcss-cli": "^2.5.2",
     "sass-lint": "^1.8.2",
     "uglify-js": "^2.7.0"
   },
   "dependencies": {
-    "bower": "^1.7.9",
+    "node-sass": "^3.8.0",
+    "autoprefixer": "^6.3.7",
+    "postcss-cli": "^2.5.2",
     "express": "^4.14.0",
+    "jquery": "^3.1.0",
     "pug": "^2.0.0-beta4"
   }
 }
