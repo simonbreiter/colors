@@ -1,0 +1,24 @@
+html
+    head
+        title='colors'
+        link(rel='stylesheet', href='public/css/main.css')
+        link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Oxygen')
+    body
+        nav
+            span.logo 140colors
+            div.btn-grp
+                span.btn.btn-order-by-name Order by name
+                    span.arrow
+                        span
+                        span
+                span.btn.btn-order-by-hex Order by hex
+                    span.arrow
+                        span
+                        span
+        main
+            ul.grid.zoom
+        script(type='text/javascript').
+            // Pass object from server to client
+            var colors = !{JSON.stringify(colors)};
+        script(src='public/vendor/jquery/dist/jquery.min.js')
+        script(src='public/js/main.js')

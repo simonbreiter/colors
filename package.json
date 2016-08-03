@@ -4,30 +4,35 @@
   "description": "",
   "main": "",
   "scripts": {
-    "sass": "node-sass --output-style compressed web/scss/main.scss web/css/main.css",
-    "uglify": "mkdir -p web/dist/js && uglifyjs web/src/js/*.js -m -o web/dist/js/main.js",
-    "autoprefixer": "postcss -u autoprefixer -r web/css/*.css",
-    "imagemin": "imagemin web/src/images web/dist/images -p",
-    "lint:sass": "./node_modules/.bin/sass-lint 'web/scss/**/*.scss' --verbose",
+    "sass": "node-sass --output-style compressed src/public/scss/main.scss src/public/css/main.css",
+    "uglify": "mkdir -p web/dist/js && uglifyjs src/public/js/*.js -m -o src/public/dist/js/main.js",
+    "autoprefixer": "postcss -u autoprefixer -r src/public/css/*.css",
+    "imagemin": "imagemin src/public/images src/public/dist/images -p",
+    "lint:sass": "./node_modules/.bin/sass-lint 'src/public/scss/**/*.scss' --verbose",
     "lint:js": "./node_modules/.bin/eslint web/src/js",
     "build:css": "npm run sass; npm run autoprefixer",
-    "watch:css": "onchange 'web/scss/*.scss' -- npm run build:css",
-    "watch:js": "onchange 'web/js/*.js' -- npm run build:js",
+    "watch:css": "onchange 'src/public/scss/*.scss' -- npm run build:css",
+    "watch:js": "onchange 'src/public/js/*.js' -- npm run build:js",
     "docker:up": "docker-compose build && docker-compose up -d",
-    "docker:down": "docker-compose down"
+    "docker:down": "docker-compose down",
+    "start": "node app.js"
   },
   "author": "Simon Breiter",
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^6.3.7",
     "imagemin-cli": "^3.0.0",
+    "node-inspector": "^0.12.8",
     "node-sass": "^3.8.0",
+    "nodemon": "^1.10.0",
     "onchange": "^2.5.0",
     "postcss-cli": "^2.5.2",
     "sass-lint": "^1.8.2",
     "uglify-js": "^2.7.0"
   },
   "dependencies": {
-    "bower": "^1.7.9"
+    "bower": "^1.7.9",
+    "express": "^4.14.0",
+    "pug": "^2.0.0-beta4"
   }
 }

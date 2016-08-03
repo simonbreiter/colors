@@ -7,7 +7,7 @@ html {
 }
 
 body {
-    font-family: sans-serif;
+    font-family: 'Oxygen', sans-serif;
     line-height: 1.4;
     background-color: #efefef;
     padding: 0;
@@ -27,6 +27,100 @@ body {
 
 li.active .wrapper {
     opacity: 1;
+}
+
+.logo {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+main {
+    margin-top: 58px;
+}
+
+nav {
+    background-color: #3d3d3d;
+    color: #efefef;
+    position: fixed;
+    width: 100%;
+    box-shadow: 0px 0px 10px black;
+    z-index: 2;
+    text-align: center;
+    top: 0;
+    display: flex;
+    flex-wrap: wrap;
+
+    @media screen and (max-width: 750px) {
+        flex-direction: column;
+    }
+
+    .logo {
+        flex: 1;
+    }
+
+    .btn-grp {
+        flex: 2;
+    }
+
+    .logo,
+    .btn {
+        padding: 1em 2em;
+
+        @media screen and (max-width: 750px) {
+            width: 100%;
+        }
+    }
+
+    .btn {
+        transition: color, background-color .2s ease;
+        display: inline-block;
+
+        &:hover {
+            color: white;
+            background-color: #585858;
+        }
+    }
+
+    .arrow {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        position: relative;
+        margin: 0 1em;
+
+        span {
+            top: 10px;
+            position: absolute;
+            width: 12px;
+            height: 2px;
+            background-color: #efefef;
+            display: inline-block;
+            transition: all .2s ease;
+
+            &:first-of-type {
+                left: 0;
+                transform: rotate(45deg);
+            }
+
+            &:last-of-type {
+                right: 0;
+                transform: rotate(-45deg);
+            }
+        }
+
+        &.active {
+
+            span {
+                &:first-of-type {
+                    transform: rotate(-225deg);
+                }
+
+                &:last-of-type {
+                    transform: rotate(225deg);
+                }
+            }
+        }
+    }
 }
 
 
