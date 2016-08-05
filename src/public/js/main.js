@@ -86,7 +86,6 @@ $('.btn-order-by-hex').on('click', function() {
 });
 
 (function init() {
-    colors = colors.sort(sortByProperty("hex", orderHexToggle));
     renderColors();
 })();
 
