@@ -17,7 +17,7 @@
     "docker:up": "docker-compose build && docker-compose up -d",
     "docker:down": "docker-compose down",
     "start": "node app.js",
-    "build": "node-sass --output-style compressed public/scss/main.scss public/css/main.css && postcss -u autoprefixer -r public/css/*.css"
+    "build": "node-sass --output-style compressed public/scss/main.scss public/css/main.css && postcss -u autoprefixer -r public/css/*.css && browserify src/public/js/main.js -o src/public/js/bundle.js"
   },
   "author": "Simon Breiter",
   "license": "MIT",
