@@ -52,7 +52,7 @@ function renderColors() {
     $('.grid.zoom').empty();
 
     for (var i = 0; i < colors.length; i++) {
-        $('ul').append('<li style="background-color:' + colors[i]["hex"] + '">'
+        $('ul').append('<li style="background-color:' + colors[i]["name"] + '">'
             + '<div class="wrapper">'
             + '<div class="name">' + colors[i]["name"] + '</div>'
             + '<div class="color-value">' + colors[i]["hex"] + '</div>'
