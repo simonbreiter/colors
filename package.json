@@ -12,7 +12,8 @@
     "lint:js": "./node_modules/.bin/eslint web/src/js",
     "build:css": "npm run sass; npm run autoprefixer",
     "watch:css": "onchange 'src/public/scss/*.scss' -- npm run build:css",
-    "watch:js": "onchange 'src/public/js/*.js' -- npm run build:js",
+    "watch:js": "onchange 'src/public/js/main.js' -- npm run build:js",
+    "build:js": "browserify src/public/js/main.js -o src/public/js/bundle.js",
     "docker:up": "docker-compose build && docker-compose up -d",
     "docker:down": "docker-compose down",
     "start": "node app.js",
@@ -21,6 +22,7 @@
   "author": "Simon Breiter",
   "license": "MIT",
   "devDependencies": {
+    "browserify": "^13.1.0",
     "imagemin-cli": "^3.0.0",
     "node-inspector": "^0.12.8",
     "nodemon": "^1.10.0",

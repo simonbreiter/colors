@@ -1,3 +1,5 @@
+var $ = require('jquery');
+
 // Save all colors in local Storage
 // for (var color in colors) {
 //     localStorage.setItem(color, colors[color]);
