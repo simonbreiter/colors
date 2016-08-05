@@ -112,11 +112,11 @@ nav {
 
             span {
                 &:first-of-type {
-                    transform: rotate(-225deg);
+                    transform: rotate(-45deg);
                 }
 
                 &:last-of-type {
-                    transform: rotate(225deg);
+                    transform: rotate(45deg);
                 }
             }
         }
