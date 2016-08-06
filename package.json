@@ -4,20 +4,19 @@
   "description": "",
   "main": "",
   "scripts": {
-    "sass": "node-sass --output-style compressed src/public/scss/main.scss src/public/css/main.css",
+    "stylus": "node_modules/stylus/bin/stylus -w src/public/stylus/main.styl -o src/public/css/main.css",
     "uglify": "mkdir -p web/dist/js && uglifyjs src/public/js/*.js -m -o src/public/dist/js/main.js",
     "autoprefixer": "postcss -u autoprefixer -r src/public/css/*.css",
     "imagemin": "imagemin src/public/images src/public/dist/images -p",
-    "lint:sass": "./node_modules/.bin/sass-lint 'src/public/scss/**/*.scss' --verbose",
     "lint:js": "./node_modules/.bin/eslint web/src/js",
-    "build:css": "npm run sass; npm run autoprefixer",
-    "watch:css": "onchange 'src/public/scss/*.scss' -- npm run build:css",
+    "build:css": "npm run stylus; npm run autoprefixer",
+    "watch:css": "onchange 'src/public/stylus/*.styl' -- npm run build:css",
     "watch:js": "onchange 'src/public/js/main.js' -- npm run build:js",
     "build:js": "browserify src/public/js/main.js -o src/public/js/bundle.js",
     "docker:up": "docker-compose build && docker-compose up -d",
     "docker:down": "docker-compose down",
     "start": "node app.js",
-    "build": "node-sass --output-style compressed public/scss/main.scss public/css/main.css && postcss -u autoprefixer -r public/css/*.css && browserify src/public/js/main.js -o src/public/js/bundle.js"
+    "build": "npm run stylus; npm run autoprefixer; npm run build:js",
   },
   "author": "Simon Breiter",
   "license": "MIT",
@@ -27,15 +26,14 @@
     "node-inspector": "^0.12.8",
     "nodemon": "^1.10.0",
     "onchange": "^2.5.0",
-    "sass-lint": "^1.8.2",
     "uglify-js": "^2.7.0"
   },
   "dependencies": {
-    "node-sass": "^3.8.0",
     "autoprefixer": "^6.3.7",
-    "postcss-cli": "^2.5.2",
     "express": "^4.14.0",
     "jquery": "^3.1.0",
-    "pug": "^2.0.0-beta4"
+    "postcss-cli": "^2.5.2",
+    "pug": "^2.0.0-beta4",
+    "stylus": "^0.54.5"
   }
 }
