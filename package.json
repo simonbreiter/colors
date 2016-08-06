@@ -4,12 +4,11 @@
   "description": "140 web colors",
   "main": "",
   "scripts": {
-    "stylus:dev": "node_modules/stylus/bin/stylus src/public/stylus/main.styl -o src/public/css/main.css",
-    "stylus:dist": "node_modules/stylus/bin/stylus public/stylus/main.styl -o public/css/main.css",
+    "stylus:dev": "mkdir -p src/public/css; node_modules/stylus/bin/stylus src/public/stylus/main.styl -c -o src/public/css/main.css",
+    "stylus:dist": "mkdir -p src/public/css; node_modules/stylus/bin/stylus public/stylus/main.styl -c -o public/css/main.css",
     "uglify": "mkdir -p web/dist/js && uglifyjs src/public/js/*.js -m -o src/public/dist/js/main.js",
     "autoprefixer:dev": "postcss -u autoprefixer -r src/public/css/*.css",
     "autoprefixer:dist": "postcss -u autoprefixer -r public/css/*.css",
-    "imagemin": "imagemin src/public/images src/public/dist/images -p",
     "lint:js": "./node_modules/.bin/eslint web/src/js",
     "build:css": "npm run stylus:dev; npm run autoprefixer:dev",
     "watch:css": "onchange 'src/public/stylus/*.styl' -- npm run build:css",
@@ -18,6 +17,8 @@
     "browserify:dist": "browserify public/js/main.js -o public/js/bundle.js",
     "docker:up": "docker-compose build; docker-compose up -d",
     "docker:down": "docker-compose down",
+    "dev": "node_modules/parallelshell/index.js 'npm run watch:css' 'npm run watch:js' 'npm run start:dev'",
+    "start:dev": "cd src; nodemon app.js",
     "start": "node app.js",
     "build": "npm run stylus:dist; npm run autoprefixer:dist; npm run browserify:dist"
   },
@@ -31,10 +32,11 @@
     "uglify-js": "^2.7.0"
   },
   "dependencies": {
-    "browserify": "^13.1.0",
     "autoprefixer": "^6.3.7",
+    "browserify": "^13.1.0",
     "express": "^4.14.0",
     "jquery": "^3.1.0",
+    "parallelshell": "^2.0.0",
     "postcss-cli": "^2.5.2",
     "pug": "^2.0.0-beta4",
     "stylus": "^0.54.5"
