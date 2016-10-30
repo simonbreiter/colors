@@ -1,3 +1,3 @@
 # README
 
-Repository of [colors.simonbreiter.ch](http://colors.simonbreiter.ch)
+Repository of [colors.simonbreiter.com](http://colors.simonbreiter.com)
