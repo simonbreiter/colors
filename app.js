@@ -1,6 +1,9 @@
 let express = require('express')
 let app = express()
+let helmet = require('helmet')
 let colors = require('./colors.json')
+
+app.use(helmet())
 
 app.use('/public', express.static(__dirname + '/public'))
 app.use('/node_modules', express.static(__dirname + '/node_modules'))
