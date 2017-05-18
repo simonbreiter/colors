@@ -4,41 +4,31 @@
   "description": "140 web colors",
   "main": "",
   "scripts": {
-    "stylus:dev": "mkdir -p src/public/css; node_modules/stylus/bin/stylus src/public/stylus/main.styl -c -o src/public/css/main.css",
-    "stylus:dist": "mkdir -p src/public/css; node_modules/stylus/bin/stylus public/stylus/main.styl -c -o public/css/main.css",
-    "uglify": "mkdir -p web/dist/js && uglifyjs src/public/js/*.js -m -o src/public/dist/js/main.js",
-    "autoprefixer:dev": "postcss -u autoprefixer -r src/public/css/main.css",
-    "autoprefixer:dist": "postcss *.css --use autoprefixer -d src/public/css/",
-    "lint:js": "./node_modules/.bin/eslint web/src/js",
-    "build:css": "npm run stylus:dev; npm run autoprefixer:dev",
-    "watch:css": "onchange 'src/public/stylus/*.styl' -- npm run build:css",
-    "watch:js": "onchange 'src/public/js/main.js' -- npm run browserify:dev",
-    "browserify:dev": "browserify src/public/js/main.js -o src/public/js/bundle.js",
-    "browserify:dist": "browserify public/js/main.js -o public/js/bundle.js",
     "docker:up": "docker-compose build; docker-compose up -d",
     "docker:down": "docker-compose down",
-    "dev": "node_modules/parallelshell/index.js 'npm run watch:css' 'npm run watch:js' 'npm run start:dev' 'node-inspector'",
-    "start:dev": "cd src; nodemon --debug app.js",
-    "start": "node app.js",
-    "build": "npm run stylus:dist; npm run autoprefixer:dist; npm run browserify:dist"
+    "dev": "nodemon --debug app.js",
+    "build": "gulp build",
+    "start": "node app.js"
   },
   "author": "Simon Breiter",
   "license": "MIT",
+  "presets": [
+    "env"
+  ],
   "devDependencies": {
-    "imagemin-cli": "^3.0.0",
-    "node-inspector": "^0.12.8",
+    "gulp": "^3.9.1",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-stylus": "^2.6.0",
+    "gulp-watch": "^4.3.11",
+    "gulp-webpack": "^1.5.0",
     "nodemon": "^1.10.0",
-    "onchange": "^2.5.0",
-    "uglify-js": "^2.7.0"
+    "stylus": "^0.54.5"
   },
   "dependencies": {
-    "autoprefixer": "^6.3.7",
-    "browserify": "^13.1.0",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
     "express": "^4.14.0",
     "jquery": "^3.1.0",
-    "parallelshell": "^2.0.0",
-    "postcss-cli": "^2.5.2",
-    "pug": "^2.0.0-beta4",
-    "stylus": "^0.54.5"
+    "pug": "^2.0.0-beta4"
   }
 }
